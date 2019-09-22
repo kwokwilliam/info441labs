@@ -1,0 +1,14 @@
+FROM mhart/alpine-node:12.4
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY ./package.json ./package-lock.json ./
+
+RUN npm install
+COPY . .
+
+EXPOSE 4000
+CMD ["npm", "run", "start"] 
+
+# OR CMD ["node", "index.js"]
